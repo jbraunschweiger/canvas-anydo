@@ -5,7 +5,7 @@
 [Canvas](https://www.instructure.com/canvas/) is a popular Learning Management tool, common among Colleges and Universities in the U.S.  
 [any.do](https://www.any.do) is a self described "productivity platform." IMO, it is the perfect marriage  of a task list and a calendar.  
 
-My issue with using planner and task tracking apps is keeping them up to date. I realized that most of my "tasks" tend to be duplicates of canvas Assignments, so I wrote this firebase function to generate them for me.  
+My issue with using planner and task tracking apps is keeping them up to date. I realized that most of my "tasks" tend to be duplicates of canvas Assignments, so I wrote this firebase function to generate them for me. The way I have it set up right now, the function checks once a day to see if there are any new assignments on my Canvas account, and if there are it ads them to my any.do as tasks.
 
 ## Implementation
 
