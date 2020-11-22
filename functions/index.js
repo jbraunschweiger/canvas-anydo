@@ -5,10 +5,10 @@ const admin = require('firebase-admin');
 admin.initializeApp();
 
 const Api = require('anydo-api');
-const anydo = new Api(functions.config().email.email, functions.config().anydo.api_key);
+const anydo = new Api(functions.config().email.key, functions.config().anydo.key);
 
 
-exports.addNewAssignmentsScheduled = functions.pubsub.schedule('0 1 * * *').timeZone('America/New_York').onRun( async (context) => {
+exports.addNewAssignmentsScheduled = functions.pubsub.schedule('0 6 * * *').timeZone('America/New_York').onRun( async (context) => {
     const db = admin.firestore();
 
     const log = await db.collection("assignment-logs").doc("log-1").get();
@@ -54,10 +54,11 @@ exports.addNewAssignmentsScheduled = functions.pubsub.schedule('0 1 * * *').time
 })
 
 async function getAssignments(course_id, bucket) {
+    console.log(functions.config().canvas.key);
     return request({
         url: 'https://wustl.instructure.com/api/v1/courses/' + course_id + '/assignments?bucket=' + bucket,
         headers: {
-           'Authorization': 'Bearer ' + functions.config().canvas.api_key,
+           'Authorization': 'Bearer ' + functions.config().canvas.key,
            'Content-Type': 'application/json'
         },
         rejectUnauthorized: false
