@@ -41,7 +41,7 @@ __Configure Firestore__
 Create an "assignment-logs" collection, and call it's first document "log-1". Add three array fields to this log: `assignments`, `courses`, and `course_names`.  
 `assignments` should start with one dummy string in the list.  
 `courses` should have a string entry holding the id of each course you want the function to see assignments from. You can find an id in the course page url on canvas. Canvas url's are structured like this: `https://[school].instructure.com/courses/[course_id]`.  
-`course_names` should have a string entries, corresponding to the course_id in the same index of `courses`. This string is the name of the class that is prepended to assignment name to make the task title. (e.g. if `courses[0]` is the id for your algorithms course, you would put something like "Algorithms" in `course_names[0]`.)  
+`course_names` should have a string entries, corresponding to the course_id in the same index of `courses`. This string is the name of the class that is prepended to assignment name to make the task title. (e.g. if `courses[0]` is the id for your algorithms course, you would put something like "Algorithms" in `course_names[0]`)  
   
 __Gather Information__
   
