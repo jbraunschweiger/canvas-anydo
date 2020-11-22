@@ -49,7 +49,6 @@ exports.addNewAssignmentsScheduled = functions.pubsub.schedule('0 20 * * *').tim
 })
 
 async function getAssignments(course_id, bucket) {
-    console.log(functions.config().canvas.key);
     return request({
         url: 'https://wustl.instructure.com/api/v1/courses/' + course_id + '/assignments?bucket=' + bucket,
         headers: {
