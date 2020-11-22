@@ -8,7 +8,7 @@ const Api = require('anydo-api');
 const anydo = new Api(functions.config().email.key, functions.config().anydo.key);
 
 
-exports.addNewAssignmentsScheduled = functions.pubsub.schedule('0 6 * * *').timeZone('America/New_York').onRun( async (context) => {
+exports.addNewAssignmentsScheduled = functions.pubsub.schedule('0 20 * * *').timeZone('America/New_York').onRun( async (context) => {
     const db = admin.firestore();
 
     const log = await db.collection("assignment-logs").doc("log-1").get();
@@ -17,11 +17,6 @@ exports.addNewAssignmentsScheduled = functions.pubsub.schedule('0 6 * * *').time
     const courseNames = log.data().course_names;
     
     var coursePromises = [];
-
-    courseList.forEach((course_id) => {
-        const a = getAssignments(course_id, "upcoming");
-        coursePromises.push(a);
-    })
 
     courseList.forEach((course_id) => {
         const a = getAssignments(course_id, "future");
